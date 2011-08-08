@@ -1,7 +1,10 @@
+html{background: #cecece }
+body{margin:0 10%; padding: 1em; background: #fff}
 pre{
   background-color: #eee;
   border: 1px solid #ddd;
   padding: 1em;
+  overflow:auto;
 }
 table th{
   background: #eee;
