@@ -134,3 +134,26 @@ SQL е много четим език, особено ако подбираме 
       name VARCHAR(30)
     );
 
+И да налеем малко данни:
+
+Два града: София и Пловдив
+
+    INSERT INTO city VALUES (NULL, "София");
+    INSERT INTO city VALUES (NULL, "Пловдив");
+
+    SELECT * FROM city;
+
+<table>
+<TR><TH>id</TH>
+<TH>name</TH>
+</TR>
+<TR><TD>1</TD>
+<TD>София</TD>
+</TR>
+<TR><TD>2</TD>
+<TD>Пловдив</TD>
+</TR>
+</table>
+
+
+
