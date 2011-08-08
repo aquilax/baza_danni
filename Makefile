@@ -2,13 +2,13 @@ BUILDDIR = ./build
 
 .PHONY: clean spell
 
-all: html epub
+all:	html epub
 
 html: *.markdown style.css Makefile
 	pandoc -s --css=style.css --toc -o $(BUILDDIR)/index.html *.markdown
 	cp style.css $(BUILDDIR)
 
-epub: 
+epub: *.markdown style.css Makefile
 	pandoc -t epub -s --epub-stylesheet=style.css --toc -o $(BUILDDIR)/book.epub *.markdown
 
 clean:
