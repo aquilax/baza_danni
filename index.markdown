@@ -6,7 +6,8 @@
 
 ## Лицензна информация
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Криейтив Комънс договор" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Произведението <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Практическо ръководство по управление на бази данни</span> създадено от <a xmlns:cc="http://creativecommons.org/ns#" href="http://bazadanni.com/book" property="cc:attributionName" rel="cc:attributionURL">Aquilax</a> ползва <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Криейтив Комънс Признание-Некомерсиално-Споделяне на споделеното 3.0 Нелокализиран договор</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/bg/"><img alt="Криейтив Комънс договор" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.5/bg/88x31.png" /></a><br />Произведението <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Практическо ръководство по управление на бази данни</span> създадено от <a xmlns:cc="http://creativecommons.org/ns#" href="http://bazadanni.com/" property="cc:attributionName" rel="cc:attributionURL">aquilax</a> ползва <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/bg/">Криейтив Комънс Признание-Некомерсиално-Споделяне на споделеното 2.5 България договор</a>.<br />Базирано на следната творба:<a xmlns:dct="http://purl.org/dc/terms/" href="http://bazadanni.com/book/" rel="dct:source">bazadanni.com</a>.
+
 
 ## Увод
 
