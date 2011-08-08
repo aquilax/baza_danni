@@ -72,7 +72,7 @@ SQL е много четим език, особено ако подбираме 
     |----------|       |------|     |-----------------|
     | id       |       | id   |     | id              |
     | city_id  |       | name |     | contact_type_id |
-    | name     |       +------+     | user_id         |
+    | name     |       +------+     | chovek_id       |
     | address  |                    | val             |
     | created  |                    | created         |
     +----------+                    +-----------------+
@@ -94,4 +94,43 @@ SQL е много четим език, особено ако подбираме 
 * **contact_type** - различните типове контакти, които ще записваме за хората: телефон, e-mail, jabber;
 * **contact** - това ще е самият контакт. Има полета за връзка към типа контакт и към човека, поле за стойност и още едно за датата и часа в които сме добавили контакта;
 * **chovek_tag** - това е свързочна табица за "много към много връзка". Тя ще свързва хората с категориите;
+
+Схемите за създаване на таблиците (в случая SQLite3) са:
+
+    CREATE TABLE chovek (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      city_id INTEGER NOT NULL,
+      name VARCHAR(100),
+      address VARCHAR(30),
+      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE city (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name VARCHAR(30)
+    );
+
+    CREATE TABLE contact (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      contact_type_id INTEGER NOT NULL,
+      chovek_id INTEGER NOT NULL,
+      val VARCHAR(100),
+      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE chovek_tag (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      chovek_id INTEGER NOT NULL,
+      tag_id INTEGER NOT NULL
+    );
+
+    CREATE TABLE tag (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name VARCHAR(30)
+    );
+
+    CREATE TABLE contact_type(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name VARCHAR(30)
+    );
 
