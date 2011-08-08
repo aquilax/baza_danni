@@ -9,7 +9,7 @@ html: *.markdown style.css Makefile
 	cp style.css $(BUILDDIR)
 
 epub: *.markdown style.css Makefile
-	pandoc -t epub -s --epub-stylesheet=style.css --toc -o $(BUILDDIR)/book.epub *.markdown
+	pandoc -t epub --epub-metadata=metadata.xml -s --epub-stylesheet=style.css --toc -o $(BUILDDIR)/book.epub *.markdown
 
 clean:
 	rm -f $(BUILDDIR)/*.html
