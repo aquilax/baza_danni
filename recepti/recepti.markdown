@@ -247,7 +247,7 @@ INSERT INTO tag VALUES (NULL, "локомотив");
 
 Случва се ключови думи да останат несвързани към елементи. Ако искаме да разберем кои са те можем да използваме следната заявка:
 
-~~~ {.sql
+~~~ {.sql}
 SELECT tag_name
 FROM tag t
 LEFT JOIN entry_tag et ON t.id = et.tag_id
