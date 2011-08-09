@@ -1,12 +1,14 @@
-### Упражнение 2 - Заиграване с данните
+## Упражнение 2 - Заиграване с данните
 
 Вече имаме някакви данни в базата. Време е да се научим как да получаваме интересна информация от данните. Примерно по колко човека познаваме от дадена категория. Това може да се постигне по два начина:
 
 Вариант 1: Групиране и агрегация;
 
-    SELECT category, count(*) AS cnt 
-    FROM chovek 
-    GROUP BY category;
+~~~ {.sql}
+SELECT category, count(*) AS cnt 
+FROM chovek 
+GROUP BY category;
+~~~
 
     category                     cnt       
     ---------------------------  ----------
@@ -25,11 +27,13 @@ SQL е много четим език, особено ако подбираме 
 
 В този случай използването на вложени заявки е погрешно и ще забави излишно заявката но за пълнота на изложението ще го покажа тук:
 
-    SELECT 
-      c1.category, 
-      (SELECT count(*) FROM chovek c2 WHERE c1.category = c2.category) AS cnt 
-    FROM chovek c1 
-    GROUP BY c1.category;
+~~~ {.sql}
+SELECT 
+  c1.category, 
+  (SELECT count(*) FROM chovek c2 WHERE c1.category = c2.category) AS cnt 
+FROM chovek c1 
+GROUP BY c1.category;
+~~~
 
     category                     cnt       
     ---------------------------  ----------
@@ -44,8 +48,7 @@ SQL е много четим език, особено ако подбираме 
 
 Резултатът от двете заявки е един и същ но е различен начинът по който те работят. Първата се изпълнява на един пас докато втората изпълнява външната заявка и за всеки резултатен ред от нея се изпълнява вътрешната заявка. Това е излишно в този случай и заявката освен по-дълга е и по-неефективна. Все пак има случаи в които вложените заявки ще ви бъдат от голяма полза.
 
-
-### Декомпозиция и нормализация
+## Декомпозиция и нормализация
 
 Нашата малка табличка е малка приятна и лесна за употреба. Но дали е достатъчна. Преди десет години повечето хора имаха най-много един телефонен номер. Днес вече не е така, Повечето ни контакти са с по няколко номера а и все по рядко използват телефонът за разговори. 
 
@@ -97,51 +100,59 @@ SQL е много четим език, особено ако подбираме 
 
 Схемите за създаване на таблиците (в случая SQLite3) са:
 
-    CREATE TABLE chovek (
-      id INTEGER PRIMARY KEY AUTO INCREMENT,
-      city_id INTEGER NOT NULL,
-      name VARCHAR(100),
-      address VARCHAR(30),
-      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
 
-    CREATE TABLE city (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name VARCHAR(30)
-    );
+~~~ {.sql}
+CREATE TABLE chovek (
+  id INTEGER PRIMARY KEY AUTO INCREMENT,
+  city_id INTEGER NOT NULL,
+  name VARCHAR(100),
+  address VARCHAR(30),
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-    CREATE TABLE contact (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      contact_type_id INTEGER NOT NULL,
-      chovek_id INTEGER NOT NULL,
-      val VARCHAR(100),
-      created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+CREATE TABLE city (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(30)
+);
 
-    CREATE TABLE chovek_tag (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      chovek_id INTEGER NOT NULL,
-      tag_id INTEGER NOT NULL
-    );
+CREATE TABLE contact (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  contact_type_id INTEGER NOT NULL,
+  chovek_id INTEGER NOT NULL,
+  val VARCHAR(100),
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-    CREATE TABLE tag (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name VARCHAR(30)
-    );
+CREATE TABLE chovek_tag (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  chovek_id INTEGER NOT NULL,
+  tag_id INTEGER NOT NULL
+);
 
-    CREATE TABLE contact_type(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name VARCHAR(30)
-    );
+CREATE TABLE tag (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(30)
+);
+
+CREATE TABLE contact_type(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(30)
+);
+~~~
+
 
 И да налеем малко данни:
 
 Два града: София и Пловдив
 
-    INSERT INTO city VALUES (NULL, "София");
-    INSERT INTO city VALUES (NULL, "Пловдив");
+~~~ {.sql}
+INSERT INTO city VALUES (NULL, "София");
+INSERT INTO city VALUES (NULL, "Пловдив");
+~~~
 
-    SELECT * FROM city;
+~~~ {.sql}
+SELECT * FROM city;
+~~~
 
 <table>
 <TR><TH>id</TH>
